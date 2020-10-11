@@ -76,6 +76,9 @@ def query(**kwargs):
         if result['code'] == 500:
             if result['message'] == 'Invalid username or password':
                 raise InvalidUsernameOrPasswordException(result['message'])
+        elif result['code'] == 404:
+            if result['message'] == 'Not Found':
+                raise EntityNotFoundException(result['message'])
     else:
         if 'data' in result:
             return result['data']
