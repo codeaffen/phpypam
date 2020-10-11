@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 # (c) Christian Meißner 2020
 
-# pylint: disable=raise-missing-from
-# pylint: disable=super-with-arguments
-
 import requests
 
 from requests.auth import HTTPBasicAuth
