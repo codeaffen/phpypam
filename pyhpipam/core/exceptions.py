@@ -16,7 +16,7 @@ class PyHPIPAMException(Exception):
             raise PyHPIPAMInvalidSyntax(message=self._message)
         elif self._code == 404:
             if self._message == 'Not Found':
-                raise EntityNotFoundException(self._message)
+                raise PyHPIPAMEntityNotFoundException(self._message)
 
         # super(PyHPIPAMException, self).__init__(*args, **kwargs)
 
@@ -26,9 +26,9 @@ class PyHPIPAMInvalidCredentials(Exception):
         super(PyHPIPAMInvalidCredentials, self).__init__(*args, **kwargs)
 
 
-class EntityNotFoundException(Exception):
+class PyHPIPAMEntityNotFoundException(Exception):
     def __init__(self, *args, **kwargs):
-        super(EntityNotFoundException, self).__init__(*args, **kwargs)
+        super(PyHPIPAMEntityNotFoundException, self).__init__(*args, **kwargs)
 
 
 class PyHPIPAMInvalidSyntax(Exception):
