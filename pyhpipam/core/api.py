@@ -120,3 +120,12 @@ class Api(object):
         _path = '{}/{}'.format(controller, controller_path)
 
         return self._query(token=self._api_token, method=DELETE, path=_path)
+
+    def update_entity(self, controller, data, **kwargs):
+        _path = controller
+        _controller_path = kwargs.pop('controller_path', None)
+
+        if _controller_path:
+            _path = '{}/{}'.format(_path, _controller_path)
+
+        return self._query(token=self._api_token, method=PATCH, path=_path, data=data)
