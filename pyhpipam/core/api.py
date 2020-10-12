@@ -70,9 +70,6 @@ class Api(object):
 
         _url = '{}/api/{}/{}'.format(self._api_url, self._api_appid, _api_path)
 
-        if _data is not None:
-            _data = json.dumps(_data)
-
         resp = _method(
             _url,
             params=_params,
@@ -100,13 +97,20 @@ class Api(object):
     def get_token(self):
         return self._api_token
 
-    def get_entity(self, **kwargs):
-        _controller = kwargs.pop('controller', None)
+    def get_entity(self, controller, **kwargs):
+        _path = controller
         _controller_path = kwargs.pop('controller_path', None)
 
-        if _controller_path is None and _controller:
-            _path = '{}'.format(_controller)
-        elif _controller and _controller_path:
-            _path = '{}/{}'.format(_controller, _controller_path)
+        if _controller_path:
+            _path = '{}/{}'.format(_path, _controller_path)
 
         return self._query(token=self._api_token, method=GET, path=_path)
+
+    def create_entity(self, controller, data, **kwargs):
+        _path = controller
+        _controller_path = kwargs.pop('controller_path', None)
+
+        if _controller_path:
+            _path = '{}/{}'.format(_path, _controller_path)
+
+        return self._query(token=self._api_token, method=POST, path=_path, data=data)
