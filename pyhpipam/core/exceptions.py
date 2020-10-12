@@ -15,8 +15,7 @@ class PyHPIPAMException(Exception):
         elif self._code == 400:
             raise PyHPIPAMInvalidSyntax(message=self._message)
         elif self._code == 404:
-            if self._message == 'Not Found':
-                raise PyHPIPAMEntityNotFoundException(self._message)
+            raise PyHPIPAMEntityNotFoundException(self._message)
 
         # super(PyHPIPAMException, self).__init__(*args, **kwargs)
 
