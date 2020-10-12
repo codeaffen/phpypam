@@ -1,11 +1,11 @@
-# pyhpipam: phpIPAM API bindings for python
+# phpypam: phpIPAM API bindings for python
 
-pyhpipam is intended to be a complete library for speaking with phpIPAM API.
+phpypam is intended to be a complete library for speaking with phpIPAM API.
 
-Using `pyhpipam` is as easy as using the UI.
+Using `phpypam` is as easy as using the UI.
 
 ```python
-pi = pyhpipam.api(
+pi = phpypam.api(
   url='https://ipam.example.com',
   app_id='ansible',
   username='apiuser',
