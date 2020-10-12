@@ -5,7 +5,7 @@ import json
 import requests
 
 from requests.auth import HTTPBasicAuth
-from pyhpipam.core.exceptions import PyHPIPAMException
+from phpypam.core.exceptions import PHPyPAMException
 
 GET = requests.get
 POST = requests.post
@@ -84,7 +84,7 @@ class Api(object):
         result = resp.json()
 
         if result['code'] not in (200, 201) or not result['success']:
-            raise PyHPIPAMException(code=result['code'], message=result['message'])
+            raise PHPyPAMException(code=result['code'], message=result['message'])
         else:
             if 'data' in result:
                 return result['data']

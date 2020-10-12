@@ -15,7 +15,7 @@ help:
 		@echo "  lint - to run code linting"
 
 lint:
-	flake8 pyhpipam
+	flake8 phpypam
 
 dist:
 	python3 setup.py sdist bdist_wheel
