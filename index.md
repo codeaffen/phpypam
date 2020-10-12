@@ -12,5 +12,5 @@ pi = pyhpipam.api(
   password='apiP455wd',
   ssl_verify=True
 )
-pi.search_entity(controller='sections')
+pi.get_entity(controller='sections')
 ```
