@@ -1,3 +1,11 @@
+ifdef PYPI_REPO
+TWINE_OPTIONS = --repository $(PYPI_REPO)
+endif
+
+ifdef PYPI_API_TOKEN
+TWINE_OPTIONS += --username __token__ --password $(PYPI_API_TOKEN)
+endif
+
 default: help
 
 help:
@@ -12,8 +20,11 @@ lint:
 dist:
 	python3 setup.py sdist bdist_wheel
 
-publis:
-	python3 -m twine upload --repository testpypi dist/*
+check: dist
+	twine check dist/*
+
+publish: check
+	twine upload $(TWINE_OPTIONS) dist/*
 
 clean:
 	rm -rf build/
