@@ -1,0 +1,17 @@
+[flake8]
+ignore =
+    F401,
+    E501,
+exclude =
+    .git,
+    __pycache__,
+    tests/fixtures/*,
+    *.pyc,
+    venv,
+deps =
+    wheel,
+    flake8-colors,
+max-complexity = 10
+import-order-style = google
+application-import-names = flake8
+format = ${cyan}%(path)s${reset}:${yellow_bold}%(row)d${reset}:${green_bold}%(col)d${reset}: ${red_bold}%(code)s${reset} %(text)s

@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 # (c) Christian Meißner 2020
 
-# pylint: disable=raise-missing-from
-# pylint: disable=super-with-arguments
-
+import json
 import requests
 
 from requests.auth import HTTPBasicAuth
-from pyhpipam.core.query import query
+from pyhpipam.core.exceptions import PyHPIPAMException
 
 GET = requests.get
 POST = requests.post
@@ -48,11 +46,67 @@ class Api(object):
         if not self._api_encryption:
             self._login()
 
+    def _query(self, **kwargs):
+        """ sends queries to phpIPAM API in a generalistic manner
+
+        :param path: Path to the controler and possibly to function to use. Default is ```user```.
+        :param method: method to be used for the query (choice: ```GET```, ```POST```, ```PATCH```, ```OPTIONS```).
+        :param headers: Headers for request.
+        :param data: (optional) Dictionary Dictionary, list of tuples, bytes, or file-like object to send in the body of the :class:`Request`.
+        :param params: (optional) Dictionary list of tuples or bytes to send in the query string for the :class:`Request`.
+        :param auth: (optional) Auth tuple to enable Basic/Digest/Custom HTTP Auth.
+        :param token: (optional) Api token get from last login.
+        """
+
+        _api_path = kwargs.pop('path', 'user')
+        _api_headers = kwargs.pop('headers', {})
+        _method = kwargs.pop('method', 'GET')
+        _data = kwargs.pop('data', None)
+        _params = kwargs.pop('params', {})
+        _auth = kwargs.pop('auth', None)
+
+        if self._api_token:
+            _api_headers['token'] = self._api_token
+
+        _url = '{}/api/{}/{}'.format(self._api_url, self._api_appid, _api_path)
+
+        if _data is not None:
+            _data = json.dumps(_data)
+
+        resp = _method(
+            _url,
+            params=_params,
+            data=_data,
+            headers=_api_headers,
+            auth=_auth,
+            verify=self._api_ssl_verify,
+            timeout=self._api_timeout,
+        )
+
+        result = resp.json()
+
+        if result['code'] not in (200, 201) or not result['success']:
+            raise PyHPIPAMException(code=result['code'], message=result['message'])
+        else:
+            if 'data' in result:
+                return result['data']
+
     def _login(self):
         _auth = HTTPBasicAuth(self._api_username, self._api_password)
-        resp = query(url=self._api_url, app_id=self._api_appid, method=POST, auth=_auth, verify=self._api_ssl_verify)
+        resp = self._query(method=POST, auth=_auth)
 
-        self._token = resp['token']
+        self._api_token = resp['token']
 
     def get_token(self):
-        return self._token
+        return self._api_token
+
+    def get_entity(self, **kwargs):
+        _controller = kwargs.pop('controller', None)
+        _controller_path = kwargs.pop('controller_path', None)
+
+        if _controller_path is None and _controller:
+            _path = '{}'.format(_controller)
+        elif _controller and _controller_path:
+            _path = '{}/{}'.format(_controller, _controller_path)
+
+        return self._query(token=self._api_token, method=GET, path=_path)
