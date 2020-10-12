@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pyhpipam",
+    name="phpypam",
     version="0.0.1",
     author="Christian Meißner",
     author_email="Christian Meißner <cme+codeaffen@meissner.sh>",
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     license="GPLv3",
     platform="Independent",
-    url="https://codeaffen.github.io/pyhpipam",
+    url="https://codeaffen.github.io/phpypam",
     packages=setuptools.find_packages(),
     classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
