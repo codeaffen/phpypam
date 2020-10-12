@@ -10,6 +10,7 @@ from pyhpipam.core.exceptions import PyHPIPAMException
 GET = requests.get
 POST = requests.post
 PATCH = requests.patch
+DELETE = requests.delete
 OPTIONS = requests.options
 
 
@@ -114,3 +115,8 @@ class Api(object):
             _path = '{}/{}'.format(_path, _controller_path)
 
         return self._query(token=self._api_token, method=POST, path=_path, data=data)
+
+    def delete_entity(self, controller, controller_path, **kwargs):
+        _path = '{}/{}'.format(controller, controller_path)
+
+        return self._query(token=self._api_token, method=DELETE, path=_path)
