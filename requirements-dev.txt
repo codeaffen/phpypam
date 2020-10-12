@@ -3,3 +3,5 @@ flake8
 flake8-colors
 requests
 inflection
+twine
+setuptools
