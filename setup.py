@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="phpypam",
-    version="0.0.1",
+    version="0.0.2",
     author="Christian Meißner",
     author_email="Christian Meißner <cme+codeaffen@meissner.sh>",
     description="Python API client library for phpIPAM installation",
@@ -18,8 +18,9 @@ setuptools.setup(
     classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3",
-        "Operating System :: OS Independent",
+        "Intended Audience :: Developers",
     ],
+    keywords='api phpipam',
     python_requires='>=3.6',
     install_requires=[
         'requests (>=2.21,<3.0)',

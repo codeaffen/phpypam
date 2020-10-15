@@ -1,7 +1,18 @@
-# phpypam
+# phpypam: Python API client library for phpIPAM installation
 
-Python API client library for [phpIPAM](https://phpipam.net/) installations.
+phpypam is intended to be a complete library for speaking with phpIPAM API.
 
-## Installation
+Using `phpypam` is as easy as using the UI.
 
-tbd
+```python
+import phpypam
+
+pi = phpypam.api(
+  url='https://ipam.example.com',
+  app_id='ansible',
+  username='apiuser',
+  password='apiP455wd',
+  ssl_verify=True
+)
+pi.get_entity(controller='sections')
+```

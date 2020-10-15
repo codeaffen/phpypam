@@ -5,3 +5,4 @@ requests
 inflection
 twine
 setuptools
+PyYAML
