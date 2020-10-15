@@ -129,3 +129,10 @@ class Api(object):
             _path = '{}/{}'.format(_path, _controller_path)
 
         return self._query(token=self._api_token, method=PATCH, path=_path, data=data)
+
+    def controllers(self):
+        result = self._query(token=self._api_token, method=OPTIONS, path='/')
+
+        controllers = ({v for ctrl in result['controllers'] for (k, v) in ctrl.items() if k == 'rel'})
+
+        return controllers
