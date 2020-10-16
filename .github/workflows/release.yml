@@ -23,5 +23,4 @@ jobs:
     - name: Build and publish
       env:
         PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-        PYPI_DRY_RUN: True
       run: make publish

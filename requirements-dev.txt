@@ -6,3 +6,4 @@ inflection
 twine
 setuptools
 PyYAML
+bumpversion
