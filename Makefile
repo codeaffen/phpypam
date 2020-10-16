@@ -6,6 +6,12 @@ ifdef PYPI_API_TOKEN
 TWINE_OPTIONS += --username __token__ --password $(PYPI_API_TOKEN)
 endif
 
+ifdef PYPI_DRY_RUN
+TWINE_CMD = echo twine
+else
+TWINE_CMD = twine
+endif
+
 default: help
 
 help:
@@ -21,10 +27,10 @@ dist:
 	python3 setup.py sdist bdist_wheel
 
 check: dist
-	twine check dist/*
+	$(TWINE_CMD) check dist/*
 
 publish: check
-	twine upload $(TWINE_OPTIONS) dist/*
+	$(TWINE_CMD) upload $(TWINE_OPTIONS) dist/*
 
 clean:
 	rm -rf build/
