@@ -71,6 +71,9 @@ class Api(object):
 
         _url = '{}/api/{}/{}'.format(self._api_url, self._api_appid, _api_path)
 
+        if _params and not _url.endswith('/'):
+            _url = _url + '/'
+
         resp = _method(
             _url,
             params=_params,
@@ -101,34 +104,38 @@ class Api(object):
     def get_entity(self, controller, **kwargs):
         _path = controller
         _controller_path = kwargs.pop('controller_path', None)
+        _params = kwargs.pop('params', None)
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=GET, path=_path)
+        return self._query(token=self._api_token, method=GET, path=_path, params=_params)
 
     def create_entity(self, controller, data, **kwargs):
         _path = controller
         _controller_path = kwargs.pop('controller_path', None)
+        _params = kwargs.pop('params', None)
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=POST, path=_path, data=data)
+        return self._query(token=self._api_token, method=POST, path=_path, data=data, params=_params)
 
     def delete_entity(self, controller, controller_path, **kwargs):
         _path = '{}/{}'.format(controller, controller_path)
+        _params = kwargs.pop('params', None)
 
-        return self._query(token=self._api_token, method=DELETE, path=_path)
+        return self._query(token=self._api_token, method=DELETE, path=_path, params=_params)
 
     def update_entity(self, controller, data, **kwargs):
         _path = controller
         _controller_path = kwargs.pop('controller_path', None)
+        _params = kwargs.pop('params', None)
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=PATCH, path=_path, data=data)
+        return self._query(token=self._api_token, method=PATCH, path=_path, data=data, params=_params)
 
     def controllers(self):
         result = self._query(token=self._api_token, method=OPTIONS, path='/')

@@ -19,28 +19,4 @@ if __name__ == '__main__':
         ssl_verify=True
     )
 
-    my_section = dict(
-        name='foobar',
-        description='new section',
-        permissions='{"3":"1","2":"2"}'
-    )
-    try:
-        entity = pi.get_entity(controller='sections', controller_path=my_section['name'])
-    except PHPyPAMEntityNotFoundException:
-        print('create entity')
-        entity = pi.create_entity(controller='sections', data=my_section)
-        entity = pi.get_entity(controller='sections', controller_path=my_section['name'])
-
-    entity = pi.get_entity(controller='sections', controller_path=my_section['name'])
-    print(json.dumps(entity, indent=4, sort_keys=True))
-
-    my_section['description'] = 'new description'
-
-    print('update entity')
-    pi.update_entity(controller='sections', controller_path=entity['id'], data=my_section)
-
-    entity = pi.get_entity(controller='sections', controller_path=my_section['name'])
-    print(json.dumps(entity, indent=4, sort_keys=True))
-
-    print('delete entity')
-    pi.delete_entity(controller='sections', controller_path=entity['id'])
+    print(pi.get_token())
