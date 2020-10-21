@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="phpypam",
-    version="0.1.0",
+    version="0.1.1",
     author="Christian Meißner",
     author_email="Christian Meißner <cme+codeaffen@meissner.sh>",
     description="Python API client library for phpIPAM installation",
