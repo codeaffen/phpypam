@@ -9,16 +9,18 @@ class PHPyPAMException(Exception):
         self._code = kwargs.pop('code', None)
         self._message = kwargs.pop('message', None)
 
-        if self._code == 200:
-            if self._message == 'No subnets found':
-                raise PHPyPAMEntityNotFoundException(self._message)
+        _NOT_FOUND_MESSAGES = {
+            'No subnets found',
+            'Address not found',
+        }
+
+        if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self.code == 404:
+            raise PHPyPAMEntityNotFoundException(self._message)
         elif self._code == 500:
             if self._message == 'Invalid username or password':
                 raise PHPyPAMInvalidCredentials(self._message)
         elif self._code == 400:
             raise PHPyPAMInvalidSyntax(message=self._message)
-        elif self._code == 404:
-            raise PHPyPAMEntityNotFoundException(self._message)
 
         # super(PHPyPAMException, self).__init__(*args, **kwargs)
 
