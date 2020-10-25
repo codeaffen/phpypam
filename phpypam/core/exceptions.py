@@ -14,7 +14,7 @@ class PHPyPAMException(Exception):
             'Address not found',
         }
 
-        if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self.code == 404:
+        if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self._code == 404:
             raise PHPyPAMEntityNotFoundException(self._message)
         elif self._code == 500:
             if self._message == 'Invalid username or password':
