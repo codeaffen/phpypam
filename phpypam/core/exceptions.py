@@ -12,6 +12,7 @@ class PHPyPAMException(Exception):
         _NOT_FOUND_MESSAGES = {
             'No subnets found',
             'Address not found',
+            'Vlan not found',
         }
 
         if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self._code == 404:
