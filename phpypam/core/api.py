@@ -2,6 +2,7 @@
 # (c) Christian Meißner 2020
 
 import json
+import re
 import requests
 
 from requests.auth import HTTPBasicAuth
@@ -140,6 +141,6 @@ class Api(object):
     def controllers(self):
         result = self._query(token=self._api_token, method=OPTIONS, path='/')
 
-        controllers = ({v for ctrl in result['controllers'] for (k, v) in ctrl.items() if k == 'rel'})
+        controllers = ({re.sub(r'^/api/' + self._api_appid + '/(.+)/$', r'\1', v) for ctrl in result['controllers'] for (k, v) in ctrl.items() if k == 'href'})
 
         return controllers
