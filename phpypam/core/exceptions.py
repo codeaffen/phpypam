@@ -14,6 +14,9 @@ class PHPyPAMException(Exception):
             'Address not found',
             'Vlan not found',
             'No vrfs configured',
+            'No devices configured',
+            'No results (filter applied)',
+            'No objects found',
         }
 
         if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self._code == 404:
