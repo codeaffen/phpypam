@@ -35,10 +35,7 @@ if __name__ == '__main__':
     entity = pi.get_entity(controller='tools/nameservers', params={'filter_by': 'name', 'filter_value': my_nameserver['name']})
     print(json.dumps(entity, indent=4, sort_keys=True))
 
-    my_nameserver = {
-        'id': entity[0]['id'],
-        'description': 'description added',
-    }
+    my_nameserver.update({'description': 'description added'})
 
     print('update entity')
     pi.update_entity(controller='tools/nameservers', controller_path=entity[0]['id'], data=my_nameserver)
