@@ -33,13 +33,19 @@ publish: check
 	$(TWINE_CMD) upload $(TWINE_OPTIONS) dist/*
 
 clean:
-	rm -rf build/
-	rm -rf dist/
-	rm -rf *.egg-info
+	rm -Rf docs/{build,_build} {build,dist} *.egg-info
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
+
+doc-setup:
+	pip install --upgrade -r docs/requirements.txt
+
+doc:
+	install -d -m 750 ./docs/plugins
+	sphinx-apidoc -o docs/plugins/ phpypam
+	make -C docs html
 
 FORCE:
 
