@@ -8,12 +8,17 @@ Welcome to phpypam's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: User documentation
 
    README
-   plugins/phpypam
+   Changelog <CHANGELOG>
    plugins/modules
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Developer documentation
+
+   Contributing <CONTRIBUTING>
 
 
 Indices and tables

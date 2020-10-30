@@ -44,7 +44,7 @@ doc-setup:
 
 doc:
 	install -d -m 750 ./docs/plugins
-	sphinx-apidoc -o docs/plugins/ phpypam
+	sphinx-apidoc -M -f -o docs/plugins/ phpypam
 	make -C docs html
 
 FORCE:

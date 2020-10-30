@@ -1,6 +1,11 @@
 phpypam.core package
 ====================
 
+.. automodule:: phpypam.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
@@ -16,14 +21,6 @@ phpypam.core.exceptions module
 ------------------------------
 
 .. automodule:: phpypam.core.exceptions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: phpypam.core
    :members:
    :undoc-members:
    :show-inheritance:

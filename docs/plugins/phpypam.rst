@@ -1,6 +1,11 @@
 phpypam package
 ===============
 
+.. automodule:: phpypam
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
@@ -8,11 +13,3 @@ Subpackages
    :maxdepth: 4
 
    phpypam.core
-
-Module contents
----------------
-
-.. automodule:: phpypam
-   :members:
-   :undoc-members:
-   :show-inheritance:
