@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import phpypam
-import json
 import yaml
 
 with open('tests/vars/server.yml') as c:
