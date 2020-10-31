@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 
 import phpypam
-import json
 import yaml
 
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
-
-from phpypam import PHPyPAMEntityNotFoundException
 
 
 if __name__ == '__main__':

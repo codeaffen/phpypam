@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # (c) Christian Meißner 2020
 
-import json
 import re
 import requests
 
@@ -16,14 +15,14 @@ OPTIONS = requests.options
 
 
 class Api(object):
+
     """ The main class. It generates tha API object where you can run
     different actions again to `create`, `update` and `delete` entities.
     It also provides functions with informational character only.
     """
-
     def __init__(self, url, app_id, username=None, password=None, token=None, encryption=False, timeout=None, ssl_verify=True, user_agent=None):
-        """ contructor method
 
+        """ contructor method
         :param url: The URL to a phpIPAM instance. It includes the protocol (`http` or `https`).
         :type url: str
         :param app_id: The app_id which is used for the API operations.
@@ -45,7 +44,6 @@ class Api(object):
         :param user_agent: With this parameter you can define a own user agent header string., defaults to None
         :type user_agent: str, optional
         """
-
         self._api_url = url
         self._api_appid = app_id
         self._api_username = username
@@ -66,8 +64,8 @@ class Api(object):
             self._login()
 
     def _query(self, path='user', headers=None, method=GET, data=None, params=None, auth=None, token=None):
-        """ Sends queries to phpIPAM API in a generalistic manner
 
+        """ Sends queries to phpIPAM API in a generalistic manner
         :param path: Path to the controler and possibly to function to use., defaults to 'user'
         :type path: str, optional
         :param headers: Optional request headers, defaults to None
@@ -89,7 +87,6 @@ class Api(object):
         :return: If query returns any data it returns this dict or list else it returns last exit status
         :rtype: Union[bool, dict, list]
         """
-
         _api_path = path
         _api_headers = headers or {}
         _method = method
@@ -124,26 +121,24 @@ class Api(object):
                 return result['data']
 
     def _login(self):
-        """ Login method
-        """
 
+        """ Login method """
         _auth = HTTPBasicAuth(self._api_username, self._api_password)
         resp = self._query(method=POST, auth=_auth)
 
         self._api_token = resp['token']
 
     def get_token(self):
-        """ Method to grap last login token
 
+        """ Method to grap last login token
         :return: Returns the api token from the last successful login.
         :rtype: str
         """
-
         return self._api_token
 
     def get_entity(self, controller, controller_path=None, params=None):
-        """ Method to get an existing entity
 
+        """ Method to get an existing entity
         :param controller: Name of the controller to request entity from.
         :type controller: str
         :param controller_path: The path which is used to query for entities, defaults to None
@@ -154,7 +149,6 @@ class Api(object):
         :return: Result of the query. It can be either a 'list' or 'dict'.
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -165,8 +159,8 @@ class Api(object):
         return self._query(token=self._api_token, method=GET, path=_path, params=_params)
 
     def create_entity(self, controller, controller_path=None, data=None, params=None):
-        """ Create an entity
 
+        """ Create an entity
         :param controller: Name of the controller to use.
         :type controller: str
         :param controller_path: The path which is used to query for entities, defaults to None
@@ -179,7 +173,6 @@ class Api(object):
         :return: Returns the newly created entity.
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -190,8 +183,8 @@ class Api(object):
         return self._query(token=self._api_token, method=POST, path=_path, data=data, params=_params)
 
     def delete_entity(self, controller, controller_path, params=None):
-        """ This method is used to delete an entity.
 
+        """ This method is used to delete an entity.
         :param controller: Name of the controller to use.
         :type controller: str
         :param controller_path: The path wich is used to access the entity to delete.
@@ -202,15 +195,14 @@ class Api(object):
         :return: Returns True if entity was deleted successfully or either 'dict' or 'list' of entities to work on.
         :rtype: Union[book, dict, list]
         """
-
         _path = '{}/{}'.format(controller, controller_path)
         _params = params
 
         return self._query(token=self._api_token, method=DELETE, path=_path, params=_params)
 
     def update_entity(self, controller, controller_path=None, data=None, params=None):
-        """ This method is used to update an entity.
 
+        """ This method is used to update an entity.
         :param controller: Name of the controller to use.
         :type controller: str
         :param controller_path: The path which is used to access the entity to update., defaults to None
@@ -223,7 +215,6 @@ class Api(object):
         :return: Returns either a 'dict' or 'list' of the changed entity
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -234,13 +225,12 @@ class Api(object):
         return self._query(token=self._api_token, method=PATCH, path=_path, data=data, params=_params)
 
     def controllers(self):
+
         """ This method is used to report all known controllers of phpIPAM API.
         Unfortunately the API doesn't report all nor the correct paths for all 'controllers'.
-
         :return: Returns a tuple of controller paths.
         :rtype: tuple
         """
-
         result = self._query(token=self._api_token, method=OPTIONS, path='/')
 
         controllers = ({re.sub(r'^/api/' + self._api_appid + '/(.+)/$', r'\1', v) for ctrl in result['controllers'] for (k, v) in ctrl.items() if k == 'href'})
