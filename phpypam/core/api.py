@@ -20,7 +20,6 @@ class Api(object):
     different actions again to `create`, `update` and `delete` entities.
     It also provides functions with informational character only.
     """
-
     def __init__(self, url, app_id, username=None, password=None, token=None, encryption=False, timeout=None, ssl_verify=True, user_agent=None):
 
         """ contructor method
@@ -45,7 +44,6 @@ class Api(object):
         :param user_agent: With this parameter you can define a own user agent header string., defaults to None
         :type user_agent: str, optional
         """
-
         self._api_url = url
         self._api_appid = app_id
         self._api_username = username
@@ -89,7 +87,6 @@ class Api(object):
         :return: If query returns any data it returns this dict or list else it returns last exit status
         :rtype: Union[bool, dict, list]
         """
-
         _api_path = path
         _api_headers = headers or {}
         _method = method
@@ -124,10 +121,7 @@ class Api(object):
                 return result['data']
 
     def _login(self):
-
-        """ Login method
-        """
-
+        """ Login method """
         _auth = HTTPBasicAuth(self._api_username, self._api_password)
         resp = self._query(method=POST, auth=_auth)
 
@@ -139,7 +133,6 @@ class Api(object):
         :return: Returns the api token from the last successful login.
         :rtype: str
         """
-
         return self._api_token
 
     def get_entity(self, controller, controller_path=None, params=None):
@@ -155,7 +148,6 @@ class Api(object):
         :return: Result of the query. It can be either a 'list' or 'dict'.
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -180,7 +172,6 @@ class Api(object):
         :return: Returns the newly created entity.
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -203,7 +194,6 @@ class Api(object):
         :return: Returns True if entity was deleted successfully or either 'dict' or 'list' of entities to work on.
         :rtype: Union[book, dict, list]
         """
-
         _path = '{}/{}'.format(controller, controller_path)
         _params = params
 
@@ -224,7 +214,6 @@ class Api(object):
         :return: Returns either a 'dict' or 'list' of the changed entity
         :rtype: Union[dict, list]
         """
-
         _path = controller
         _controller_path = controller_path
         _params = params
@@ -241,7 +230,6 @@ class Api(object):
         :return: Returns a tuple of controller paths.
         :rtype: tuple
         """
-
         result = self._query(token=self._api_token, method=OPTIONS, path='/')
 
         controllers = ({re.sub(r'^/api/' + self._api_appid + '/(.+)/$', r'\1', v) for ctrl in result['controllers'] for (k, v) in ctrl.items() if k == 'href'})

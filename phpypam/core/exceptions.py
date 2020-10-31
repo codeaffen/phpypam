@@ -44,35 +44,32 @@ class PHPyPAMException(Exception):
 
 
 class PHPyPAMInvalidCredentials(Exception):
+
     """ Exception PHPyPAMInvalidCredentials, children of :class:`Exception`.
     This Exception is raised if there are any issues with the authentication against phpIPAM api.
     """
     def __init__(self, *args, **kwargs):
-
-        """ constructor method
-        """
+        """ constructor method """
         super(PHPyPAMInvalidCredentials, self).__init__(*args, **kwargs)
 
 
 class PHPyPAMEntityNotFoundException(Exception):
+
     """ Exception PHPyPAMEntityNotFoundException, children of :class:`Exception`.
     This Exception is raised if an entity was not found.
     """
     def __init__(self, *args, **kwargs):
-
-        """ constructor method
-        """
+        """ constructor method """
         super(PHPyPAMEntityNotFoundException, self).__init__(*args, **kwargs)
 
 
 class PHPyPAMInvalidSyntax(Exception):
+
     """ Exception PHPyPAMInvalidSyntax, children of :class:`Exception`.
     This Exception is raised if there are any issues with syntax of request against phpIPAM api.
     """
     def __init__(self, *args, **kwargs):
-
-        """ constructor method
-        """
+        """ constructor method """
         self._message = kwargs.pop('message', '')
 
         super(PHPyPAMInvalidSyntax, self).__init__(self._message, *args, **kwargs)
