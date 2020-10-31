@@ -121,7 +121,6 @@ class Api(object):
                 return result['data']
 
     def _login(self):
-
         """ Login method """
         _auth = HTTPBasicAuth(self._api_username, self._api_password)
         resp = self._query(method=POST, auth=_auth)
