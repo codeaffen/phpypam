@@ -1,7 +1,5 @@
 """Class to provided different Exceptions."""
 
-import json
-
 
 class PHPyPAMException(Exception):
     """PHPyPAMExeption, children of :class:`Exception`.
