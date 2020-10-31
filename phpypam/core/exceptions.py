@@ -1,14 +1,18 @@
-# provides the main query methods.
+"""Class to provided different Exceptions."""
 
 import json
 
 
 class PHPyPAMException(Exception):
-    """ PHPyPAMExeption, children of :class:`Exception`.
+    """PHPyPAMExeption, children of :class:`Exception`.
+
     This exception is raised if anythings in :class:`phpypam.api` doesn't work out.
     """
+
     def __init__(self, *args, code=None, message=None):
-        """ Constructor method.
+        """Generate PHPyPAMException.
+
+        This Exception takes 'code' and 'message' and decided on it which special Exception can be raised.
 
         :param code: Status code which comes from caller., defaults to None
         :type code: int, optional
@@ -44,32 +48,35 @@ class PHPyPAMException(Exception):
 
 
 class PHPyPAMInvalidCredentials(Exception):
+    """Exception PHPyPAMInvalidCredentials, children of :class:`Exception`.
 
-    """ Exception PHPyPAMInvalidCredentials, children of :class:`Exception`.
     This Exception is raised if there are any issues with the authentication against phpIPAM api.
     """
+
     def __init__(self, *args, **kwargs):
-        """ constructor method """
+        """Generate PHPyPAMInvalidCredentials exception."""
         super(PHPyPAMInvalidCredentials, self).__init__(*args, **kwargs)
 
 
 class PHPyPAMEntityNotFoundException(Exception):
+    """Exception PHPyPAMEntityNotFoundException, children of :class:`Exception`.
 
-    """ Exception PHPyPAMEntityNotFoundException, children of :class:`Exception`.
     This Exception is raised if an entity was not found.
     """
+
     def __init__(self, *args, **kwargs):
-        """ constructor method """
+        """Generate PHPyPAMEntityNotFoundException."""
         super(PHPyPAMEntityNotFoundException, self).__init__(*args, **kwargs)
 
 
 class PHPyPAMInvalidSyntax(Exception):
+    """Exception PHPyPAMInvalidSyntax, children of :class:`Exception`.
 
-    """ Exception PHPyPAMInvalidSyntax, children of :class:`Exception`.
     This Exception is raised if there are any issues with syntax of request against phpIPAM api.
     """
+
     def __init__(self, *args, **kwargs):
-        """ constructor method """
+        """Generate PHPyPAMInvalidSyntax exception."""
         self._message = kwargs.pop('message', '')
 
         super(PHPyPAMInvalidSyntax, self).__init__(self._message, *args, **kwargs)

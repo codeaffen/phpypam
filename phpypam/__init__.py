@@ -1,3 +1,4 @@
+"""Package that provides phpIPAM API interface."""
 from pkg_resources import get_distribution, DistributionNotFound
 
 from phpypam.core.api import Api as api
