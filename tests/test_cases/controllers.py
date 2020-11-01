@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+"""Test controller method."""
+import pytest
 import phpypam
 import yaml
 
@@ -7,7 +7,8 @@ with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
 
-if __name__ == '__main__':
+def test_controllers():
+    """Test if controllers method returns correct datatype."""
     pi = phpypam.api(
         url=server['url'],
         app_id=server['app_id'],
@@ -16,4 +17,5 @@ if __name__ == '__main__':
         ssl_verify=True
     )
 
-    print(pi.get_token())
+    controllers = pi.controllers()
+    assert isinstance(controllers, set)
