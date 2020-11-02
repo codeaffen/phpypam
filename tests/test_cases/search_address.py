@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+"""Test search for address."""
+import pytest
 import phpypam
 import json
 import yaml
@@ -10,7 +10,8 @@ with open('tests/vars/server.yml') as c:
 from phpypam import PHPyPAMEntityNotFoundException
 
 
-if __name__ == '__main__':
+def test_address_not_found():
+    """Test address not found execption."""
     pi = phpypam.api(
         url=server['url'],
         app_id=server['app_id'],
@@ -21,8 +22,6 @@ if __name__ == '__main__':
 
     addr = '10.10.0.4'
 
-    try:
-        entity = pi.get_entity(controller='addresses', controller_path='search/' + addr)
-        print("""Address '{0}' found:\nResult:\n{1}""".format(addr, json.dumps(entity, indent=2, sort_keys=True)))
-    except PHPyPAMEntityNotFoundException:
-        print("Address '{0}' not found.".format(addr))
+    search_kwargs = dict(controller='addresses', controller_path='search/' + addr)
+
+    pytest.raises(PHPyPAMEntityNotFoundException, pi.get_entity, **search_kwargs)
