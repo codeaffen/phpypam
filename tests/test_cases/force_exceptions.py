@@ -1,10 +1,9 @@
 """Test exceptions."""
 import pytest
 import phpypam
-import json
 import yaml
 
-from phpypam.core.exceptions import PHPyPAMException, PHPyPAMEntityNotFoundException, PHPyPAMInvalidCredentials, PHPyPAMInvalidSyntax
+from phpypam.core.exceptions import PHPyPAMInvalidCredentials, PHPyPAMInvalidSyntax
 
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)

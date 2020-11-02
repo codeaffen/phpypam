@@ -1,5 +1,4 @@
 """Test controller method."""
-import pytest
 import phpypam
 import yaml
 
