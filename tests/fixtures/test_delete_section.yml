@@ -1,0 +1,154 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/sections/foobar
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA02QT2sDIRTEv0qYsym6m0u9FUJPaQpd6GkvRl9bYVeDfwhl2e9etRvIRZwfz5l5
+        LtDeEGTHOUPMWlOMkClkYjAqKcgF1kBCdBwMTs1lGF/eX1Qo2lDUwV6T9a5gR7fdI2GYVUwUBtLb
+        RPW4UphtjAWUJCwj+hFyhBjBRnTtXs61TMYUrE5vrSBEBfniKL0HQ8G6b0iXp4nBV30XZGw6qlRf
+        dLzjeyH2/LATB9k/y7ZC/PG3ofncTQv4PL2ct3pNfrw+qCGXyjXXTb8bPp6H/8CVIdn6J/yJ8379
+        A+B1YcBPAQAA
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=3siavl1rat5e2il2l4p2lsppml; expires=Thu, 05-Nov-2020 13:39:21 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.24.0
+    method: DELETE
+    uri: https://ipam.example.org/api/ansible/sections/120
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6tWSs5PSVWyMjIw0FEqLk1OTi0uVrIqKSpN1VEqycwFyhjoGRhY1gIAFM+iSSgA
+        AAA=
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=us0lrl4u86k3us4v269rbbo7pb; expires=Thu, 05-Nov-2020 13:39:21 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/sections/foobar
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6tWSs5PSVWyMjEw0VEqLk1OTi0uVrJKS8wpTtVRygVyEtOBskp++SUKbvmleSlK
+        OkolmblAIQM9AwPjWgChqv3nPwAAAA==
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=aqdhu4tksfbctcbmn6bj94iar7; expires=Thu, 05-Nov-2020 13:39:21 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 404
+      message: Not Found
+version: 1

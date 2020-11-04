@@ -1,0 +1,108 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.24.0
+    method: POST
+    uri: https://ipam.example.org/api/ansible/user
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAw3NSwrCMBQF0K3IHSdyE0XMmyvOBH8DJ1KSN6jFVpoUC6V7tws4nAmxSwrxpEEe
+        YtScIaUf1CBVpYJMKF2jLQT5YcPhdT69L/H+bI+a7Pi77m4BBjp+614XCU9P65zlduUpmyBuj9mg
+        1J9l4ZoM8x+T/nkcdAAAAA==
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:18 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=9q9sne55trqrr44rjm7qg0c9p8; expires=Thu, 05-Nov-2020 13:39:18 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.24.0
+    method: OPTIONS
+    uri: https://ipam.example.org/api/ansible//
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA42SsXLDIAyG30UzV3Pt5q1P0aHuoIDccsGQE3IWn9892HV9IXfBXRik7xP8wAQm
+        WoL2VWsFaTSGUoJWeCQFFgWhneBCPLiUXAy5BR/shEBlLwhH74lz9XMCJp+7iYysoIIfpj5XugYv
+        Li8huZOnrvkjugZmtWvjKZDUrF+gkPro7bL7U2kDCgmt5ZyRKtqOFOLVYy3W0i557ms49wUdcKBE
+        fK3mkRh9PtQdW16iwfD+TaF2j9uIBcUVLSb4aPDg+bYBO1n4jOZ87K7UQ3r5R2opnLV8aMH8NSsQ
+        N+Q/rl+0fptvrSqZ5PICAAA=
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:18 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=lj6n8k9rom3l1ee592u2mqk68g; expires=Thu, 05-Nov-2020 13:39:18 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 200
+      message: OK
+version: 1

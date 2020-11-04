@@ -1,0 +1,51 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.24.0
+    method: POST
+    uri: https://ipam.example.org/api/faulty%20data/user
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6tWSs5PSVWyMjEw0FEqLk1OTi0uVrJKS8wpTtVRygVyEtOBskqeeWWJOZkpCokF
+        BTmZyYklmfl5CpkpSjpKJZm5QHmDWgBOB7BhSAAAAA==
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:23 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=0r1j63842r87c6skgjhb7u27r5; expires=Thu, 05-Nov-2020 13:39:23 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 400
+      message: Bad Request
+version: 1

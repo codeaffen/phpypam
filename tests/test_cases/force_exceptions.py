@@ -1,13 +1,15 @@
 """Test exceptions."""
-import pytest
 import phpypam
+import pytest
+import vcr
 import yaml
 
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS, FILTER_RESPONSE_HEADERS
 from phpypam.core.exceptions import PHPyPAMInvalidCredentials, PHPyPAMInvalidSyntax
+
 
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
-
 
 connection_params = dict(
     url=server['url'],
@@ -18,6 +20,11 @@ connection_params = dict(
 )
 
 
+@vcr.use_cassette(cassette_name('test_invalid_syntax_exception'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
 def test_invalid_syntax_exception():
     """Test invalid syntax exception.
 
@@ -31,6 +38,11 @@ def test_invalid_syntax_exception():
     connection_params.update({'app_id': server['app_id']})
 
 
+@vcr.use_cassette(cassette_name('test_invalid_credentials_exception'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
 def test_invalid_credentials_exception():
     """Test invalid credentials exception.
 

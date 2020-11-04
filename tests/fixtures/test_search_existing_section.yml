@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/sections/?filter_by=name&filter_value=IPv6&filter_match=full
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA02QQUvEMBCF/0p557Bku7CH3IRFEHQVC16Mh5iMa6BNliRVpPS/O6kteAnzPl7e
+        PGaCjY6gWikF8mgt5QxV0kgCzhQD9TrBOyi0EAhmYC/unr6OrBxlm/y1+BgYdmTr1HzE1FRDY5xL
+        nEaZrYPJhdJqYbNkdqU0+JwZ8EZMGgcNpbHXEBrtMvM7szOX5G15WIpiX8H4Hqg8JkfJhwtUGPte
+        IFa9CXK+nEyhTefP+N0t37YMBi/3N+e1zSKfb/+pbuSGdU3of1Z8Ond/efObQPH1GHIn5WH+BWf2
+        6dBHAQAA
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 04 Nov 2020 13:39:24 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.37 (centos) OpenSSL/1.1.1c
+      Set-Cookie:
+      - phpipam=b27c0o91pp5q3irgqisonqv0cq; expires=Thu, 05-Nov-2020 13:39:24 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.2.24
+    status:
+      code: 200
+      message: OK
+version: 1
