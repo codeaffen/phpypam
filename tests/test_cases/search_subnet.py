@@ -17,18 +17,9 @@ with open('tests/vars/server.yml') as c:
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_subnet_not_found():
+def test_subnet_not_found(pi):
     """Test subnet not found exeption."""
-    pi = phpypam.api(
-        url=server['url'],
-        app_id=server['app_id'],
-        username=server['username'],
-        password=server['password'],
-        ssl_verify=True
-    )
-
     cidr = '10.0.0.0/24'
-
     search_kwargs = dict(controller='subnets', controller_path='cidr/' + cidr)
 
     pytest.raises(PHPyPAMEntityNotFoundException, pi.get_entity, **search_kwargs)

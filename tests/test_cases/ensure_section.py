@@ -11,14 +11,6 @@ from phpypam import PHPyPAMEntityNotFoundException
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
-pi = phpypam.api(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
 my_section = dict(
     name='foobar',
     description='new section',
@@ -31,7 +23,7 @@ my_section = dict(
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_create_section():
+def test_create_section(pi):
     """Test to create a new section.
 
     Create a section if it doesn't exists
@@ -51,7 +43,7 @@ def test_create_section():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_update_section():
+def test_update_section(pi):
     """Test to update an existing section.
 
     Update one field of an existing section.
@@ -70,7 +62,7 @@ def test_update_section():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_delete_section():
+def test_delete_section(pi):
     """Test to delete an existing section.
 
     Delete one field of an existing section.

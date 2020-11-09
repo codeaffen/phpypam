@@ -11,14 +11,6 @@ from tests.conftest import filter_request_uri, filter_response, cassette_name, F
 from phpypam import PHPyPAMEntityNotFoundException
 
 
-pi = phpypam.api(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
 my_nameserver = dict(
     name='my dns',
     namesrv1='127.0.01',
@@ -31,7 +23,7 @@ my_nameserver = dict(
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_create_nameserver():
+def test_create_nameserver(pi):
     """Test to create a new nameserver.
 
     Create a nameserver if it doesn't exists
@@ -50,7 +42,7 @@ def test_create_nameserver():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_update_nameserver():
+def test_update_nameserver(pi):
     """Test to update an existing nameserver.
 
     Update one field of an existing nameserver
@@ -70,7 +62,7 @@ def test_update_nameserver():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_delete_nameserver():
+def test_delete_nameserver(pi):
     """Test to delete an existing nameserver.
 
     Delete the nameserver which we created before

@@ -11,14 +11,6 @@ from phpypam import PHPyPAMEntityNotFoundException
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
-pi = phpypam.api(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
 my_vlan = dict(
     name='my vlan',
     number='1337',
@@ -30,7 +22,7 @@ my_vlan = dict(
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_create_vlan():
+def test_create_vlan(pi):
     """Test to create a new vlan.
 
     Create a vlan if it doesn't exists
@@ -49,7 +41,7 @@ def test_create_vlan():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_update_vlan():
+def test_update_vlan(pi):
     """Test to update an existing vlan.
 
     Update one field of an existing vlan
@@ -72,7 +64,7 @@ def test_update_vlan():
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
                   )
-def test_delete_vlan():
+def test_delete_vlan(pi):
     """Test to delete an existing vlan.
 
     Delete vlan which we created before
