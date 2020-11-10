@@ -1,5 +1,4 @@
 """Tests to check funtionallity of section handling."""
-import phpypam
 import pytest
 import vcr
 import yaml
@@ -7,7 +6,7 @@ import yaml
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
-from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS, FILTER_RESPONSE_HEADERS
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam import PHPyPAMEntityNotFoundException
 
 

@@ -1,8 +1,7 @@
 """Test controller method."""
-import pytest
 import vcr
 
-from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS, FILTER_RESPONSE_HEADERS
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 
 
 @vcr.use_cassette(cassette_name('test_controllers'),

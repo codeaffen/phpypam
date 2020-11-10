@@ -1,10 +1,9 @@
 """Test search for address."""
-import phpypam
 import pytest
 import vcr
 import yaml
 
-from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS, FILTER_RESPONSE_HEADERS
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam import PHPyPAMEntityNotFoundException
 
 

@@ -1,9 +1,7 @@
 """Provide some base configurations for tests."""
-import inspect
 import phpypam
 import pytest
 import py.path
-import re
 import yaml
 
 from urllib.parse import urlparse, urlunparse
