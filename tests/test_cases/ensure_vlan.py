@@ -1,21 +1,14 @@
 """Tests to check funtionallity of vlan handling."""
-import phpypam
 import pytest
+import vcr
 import yaml
 
-with open('tests/vars/server.yml') as c:
-    server = yaml.safe_load(c)
-
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam import PHPyPAMEntityNotFoundException
 
 
-pi = phpypam.api(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
+with open('tests/vars/server.yml') as c:
+    server = yaml.safe_load(c)
 
 my_vlan = dict(
     name='my vlan',
@@ -23,7 +16,12 @@ my_vlan = dict(
 )
 
 
-def test_create_vlan():
+@vcr.use_cassette(cassette_name('test_create_vlan'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_create_vlan(pi):
     """Test to create a new vlan.
 
     Create a vlan if it doesn't exists
@@ -37,7 +35,12 @@ def test_create_vlan():
     assert entity is not None
 
 
-def test_update_vlan():
+@vcr.use_cassette(cassette_name('test_update_vlan'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_update_vlan(pi):
     """Test to update an existing vlan.
 
     Update one field of an existing vlan
@@ -55,7 +58,12 @@ def test_update_vlan():
     assert entity[0]['description'] == my_vlan['description']
 
 
-def test_delete_vlan():
+@vcr.use_cassette(cassette_name('test_delete_vlan'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_delete_vlan(pi):
     """Test to delete an existing vlan.
 
     Delete vlan which we created before

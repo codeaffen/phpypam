@@ -1,21 +1,14 @@
 """Tests to check funtionallity of section handling."""
-import phpypam
 import pytest
+import vcr
 import yaml
 
-with open('tests/vars/server.yml') as c:
-    server = yaml.safe_load(c)
-
+from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam import PHPyPAMEntityNotFoundException
 
 
-pi = phpypam.api(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
+with open('tests/vars/server.yml') as c:
+    server = yaml.safe_load(c)
 
 my_section = dict(
     name='foobar',
@@ -24,7 +17,12 @@ my_section = dict(
 )
 
 
-def test_create_section():
+@vcr.use_cassette(cassette_name('test_create_section'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_create_section(pi):
     """Test to create a new section.
 
     Create a section if it doesn't exists
@@ -39,7 +37,12 @@ def test_create_section():
     assert entity is not None
 
 
-def test_update_section():
+@vcr.use_cassette(cassette_name('test_update_section'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_update_section(pi):
     """Test to update an existing section.
 
     Update one field of an existing section.
@@ -53,8 +56,12 @@ def test_update_section():
     assert entity['description'] == my_section['description']
 
 
-# @ pytest.mark.xpass(raises=PHPyPAMEntityNotFoundException)
-def test_delete_section():
+@vcr.use_cassette(cassette_name('test_delete_section'),
+                  filter_headers=FILTER_REQUEST_HEADERS,
+                  before_record_request=filter_request_uri,
+                  before_recorde_response=filter_response
+                  )
+def test_delete_section(pi):
     """Test to delete an existing section.
 
     Delete one field of an existing section.
