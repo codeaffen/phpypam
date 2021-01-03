@@ -27,7 +27,7 @@ class Api(object):
 
         The costructor collects all data to connect to phpIPAM API. If all data is there it makes the connection to the given server.
 
-        :param url: The URL to a phpIPAM instance. It includes the protocol (`http` or `https`).
+        :param url: The URL to a phpIPAM instance. As phpIPAM expects `https` we also only supports secure connections.
         :type url: str
         :param app_id: The app_id which is used for the API operations.
             For modifying operations it needs read/write access.
