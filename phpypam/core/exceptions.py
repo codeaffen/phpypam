@@ -39,7 +39,7 @@ class PHPyPAMException(Exception):
         elif self._code == 500:
             if self._message == 'Invalid username or password':
                 raise PHPyPAMInvalidCredentials(self._message)
-        elif self._code == 400:
+        elif self._code == 400 or self._code == 503:
             raise PHPyPAMInvalidSyntax(message=self._message)
 
         # super(PHPyPAMException, self).__init__(*args, **kwargs)
