@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     license="GPLv3",
     platform="Independent",
-    url="https://codeaffen.github.io/phpypam",
+    url="https://codeaffen.org/projects/phpypam/",
     packages=setuptools.find_packages(),
     classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
