@@ -1,4 +1,5 @@
 wheel
+changelog-cli
 flake8
 flake8-colors
 flake8-docstrings
