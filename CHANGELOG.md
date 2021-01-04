@@ -1,19 +1,30 @@
 # phpypam CHANGELOG
 
+
 ## Unreleased
+---
+
+### New
+
+### Changes
+
+### Fixes
+
+### Breaks
+
+
+## 1.0.1 - (2021-01-04)
 
 ### New
 
 * add markdownlint config
 * add changelog
 
-### Changes
 
 ### Fixes
 
 * fix exception handling for connection errors
 
-### Breaks
 
 ## 1.0.0
 
