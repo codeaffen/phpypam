@@ -60,8 +60,7 @@ test-setup: | tests/vars/server.yml
 	pip install --upgrade -r requirements-dev.txt
 
 tests/vars/server.yml:
-	cp $@.example $@
-	@echo "Please configure $@ to point to your phpIPAM instance for recording."
+	sed -e "s#~~url~~#$(PHPIPAM_URL)#" -e "s#~~app_id~~#$(PHPIPAM_APPID)#" -e "s#~~username~~#$(PHPIPAM_USERNAME)#" -e "s#~~password~~#$(PHPIPAM_PASSWORD)#" $@.example > $@
 
 test-all:
 	coverage run -m pytest tests/test_cases/* -v

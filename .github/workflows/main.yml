@@ -16,6 +16,11 @@ jobs:
       with:
         python-version: '3.x'
     - name: Prepare test environment
+      env:
+        PHPIPAM_URL: ${{ secrets.PHPIPAM_URL }}
+        PHPIPAM_APPID: ${{ secrets.PHPIPAM_APPID }}
+        PHPIPAM_USERNAME: ${{ secrets.PHPIPAM_USERNAME }}
+        PHPIPAM_PASSWORD: ${{ secrets.PHPIPAM_PASSWORD }}
       run: |
         python -m pip install --upgrade pip
         make test-setup
