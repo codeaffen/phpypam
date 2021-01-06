@@ -1,5 +1,5 @@
 # Parameter for all tests
-url: 'https://ipam.example.com'
-app_id: my_app
-username: user
-password: p455w0rd
+url: ~~url~~
+app_id: ~~app_id~~
+username: ~~username~~
+password: ~~password~~
