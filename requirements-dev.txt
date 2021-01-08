@@ -3,7 +3,7 @@ changelog-cli
 flake8
 flake8-colors
 flake8-docstrings
-requests
+requests~=2.24.0
 inflection
 twine
 setuptools
