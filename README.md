@@ -47,7 +47,7 @@ pi.get_entity(controller='sections')
 
 ## making api connection
 
-To connect to phpIPAM API you need some parameter to authenticate against the phpIPAM instance.
+To connect to phpIPAM API you need some parameters to authenticate against the phpIPAM instance.
 
 Parameter | Description | Default |
 :-------- | :---------- | :------ |
