@@ -32,6 +32,7 @@ class PHPyPAMException(Exception):
             'No devices configured',
             'No results (filter applied)',
             'No objects found',
+            'Hostname not found'
         }
 
         if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self._code == 404:
