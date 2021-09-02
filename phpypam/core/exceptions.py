@@ -7,6 +7,17 @@ class PHPyPAMException(Exception):
     This exception is raised if anythings in :class:`phpypam.api` doesn't work out.
     """
 
+    _NOT_FOUND_MESSAGES = {
+        'No subnets found',
+        'Address not found',
+        'Vlan not found',
+        'No vrfs configured',
+        'No devices configured',
+        'No results (filter applied)',
+        'No objects found',
+        'Hostname not found'
+    }
+
     def __init__(self, *args, code=None, message=None):
         """Generate PHPyPAMException.
 
@@ -24,18 +35,7 @@ class PHPyPAMException(Exception):
         self._code = code
         self._message = message
 
-        _NOT_FOUND_MESSAGES = {
-            'No subnets found',
-            'Address not found',
-            'Vlan not found',
-            'No vrfs configured',
-            'No devices configured',
-            'No results (filter applied)',
-            'No objects found',
-            'Hostname not found'
-        }
-
-        if (self._code == 200 and self._message in _NOT_FOUND_MESSAGES) or self._code == 404:
+        if (self._code == 200 and self._message in self._NOT_FOUND_MESSAGES) or self._code == 404:
             raise PHPyPAMEntityNotFoundException(self._message)
         elif self._code == 500:
             if self._message == 'Invalid username or password':
