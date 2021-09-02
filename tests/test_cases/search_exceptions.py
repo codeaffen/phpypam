@@ -19,8 +19,6 @@ connection_params = dict(
     ssl_verify=True
 )
 
-not_found_messages = PHPyPAMException._NOT_FOUND_MESSAGES
-
 not_found_cases = [
     dict(controller='subnets', path='cidr/1.2.3.4', params=None),
     dict(controller='addresses', path='search/1.2.3.4'),
@@ -53,4 +51,4 @@ def test_entity_not_found_exception(case):
         pi.get_entity(case['controller'], controller_path=case.pop('path', None), params=case.pop('params', None))
 
         # assert exception message is in all not found outputs
-        assert e.value.args[0] in not_found_cases
+        assert e.value.args[0] in PHPyPAMException._NOT_FOUND_MESSAGES

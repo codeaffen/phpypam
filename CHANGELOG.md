@@ -9,6 +9,7 @@
 ### Changes
 
 ### Fixes
+* fix #48 - raise PHPyPAMEntityNotFoundException if searching for non existing host
 
 ### Breaks
 
