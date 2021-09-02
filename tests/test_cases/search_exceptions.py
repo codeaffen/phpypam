@@ -51,4 +51,4 @@ def test_entity_not_found_exception(case):
         pi.get_entity(case['controller'], controller_path=case.pop('path', None), params=case.pop('params', None))
 
         # assert exception message is in all not found outputs
-        assert e.value.args[0] in PHPyPAMException._NOT_FOUND_MESSAGES
+        assert str(e.value) in PHPyPAMException._NOT_FOUND_MESSAGES
