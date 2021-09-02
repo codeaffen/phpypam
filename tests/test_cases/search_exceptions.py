@@ -1,5 +1,4 @@
 """Test exceptions."""
-from vcr import record_mode
 import phpypam
 import pytest
 import vcr
@@ -30,7 +29,7 @@ not_found_cases = [
     dict(controller='devices', path='/1337'),
     dict(controller='sections', params={'filter_by': 'name', 'filter_value': 'not_existing_section', 'filter_match': 'full'}),
     dict(controller='tools/device_types', path='/1337'),
-    dict(controller='addresses', path=f"search_hostname/not_existing_hostname/")
+    dict(controller='addresses', path='search_hostname/not_existing_hostname')
 ]
 
 
