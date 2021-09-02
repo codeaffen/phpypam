@@ -130,3 +130,6 @@ dmypy.json
 
 # project specific ignores
 tests/vars/server.yml
+
+# IDE and editor files
+.vscode/
