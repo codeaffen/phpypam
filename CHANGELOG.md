@@ -14,6 +14,10 @@
 
 ---
 
+### New 
+
+* add test cases to check PHPyPAMEntityNotFoundException
+
 ### Fixes
 
 * fix #48 - raise PHPyPAMEntityNotFoundException if searching for non existing host
