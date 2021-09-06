@@ -6,6 +6,8 @@
 
 ### Changes
 
+* remove duplicated code from test cases
+
 ### Fixes
 
 ### Breaks
@@ -14,7 +16,7 @@
 
 ---
 
-### New 
+### New
 
 * add test cases to check PHPyPAMEntityNotFoundException
 

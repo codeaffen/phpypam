@@ -11,14 +11,6 @@ from phpypam.core.exceptions import PHPyPAMInvalidCredentials, PHPyPAMInvalidSyn
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
-connection_params = dict(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
 
 @vcr.use_cassette(cassette_name('test_invalid_syntax_exception'),
                   filter_headers=FILTER_REQUEST_HEADERS,
@@ -30,12 +22,11 @@ def test_invalid_syntax_exception():
 
     Test if PHPyPAMInvalidSyntax exception is fired corretly.
     """
-    connection_params.update({'app_id': 'faulty data'})
+    connection_kwargs = server.copy()
+    connection_kwargs.update({'app_id': 'faulty data'})
 
     with pytest.raises(PHPyPAMInvalidSyntax, match='Invalid application id'):
-        phpypam.api(**connection_params)
-
-    connection_params.update({'app_id': server['app_id']})
+        phpypam.api(**connection_kwargs)
 
 
 @vcr.use_cassette(cassette_name('test_invalid_credentials_exception'),
@@ -48,12 +39,11 @@ def test_invalid_credentials_exception():
 
     Test if ...
     """
-    connection_params.update({'username': 'faulty data'})
+    connection_kwargs = server.copy()
+    connection_kwargs.update({'username': 'faulty data'})
     with pytest.raises(PHPyPAMInvalidCredentials):
-        phpypam.api(**connection_params)
+        phpypam.api(**connection_kwargs)
 
-    connection_params.update({'username': server['username'], 'password': 'wrong_data'})
+    connection_kwargs.update({'username': server['username'], 'password': 'wrong_data'})
     with pytest.raises(PHPyPAMInvalidCredentials):
-        phpypam.api(**connection_params)
-
-    connection_params.update({'password': server['password']})
+        phpypam.api(**connection_kwargs)

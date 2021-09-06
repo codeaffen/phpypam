@@ -11,14 +11,6 @@ from phpypam.core.exceptions import PHPyPAMInvalidCredentials
 with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
-connection_params = dict(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
 
 @vcr.use_cassette(cassette_name('test_connection_success'),
                   filter_headers=FILTER_REQUEST_HEADERS,
@@ -27,7 +19,7 @@ connection_params = dict(
                   )
 def test_connection_success():
     """Test whether a connection to API can be done."""
-    pi = phpypam.api(**connection_params)
+    pi = phpypam.api(**server)
 
     token = pi.get_token()
 
@@ -45,12 +37,12 @@ def test_connection_failure():
 
     Test if failure where reported correctly if there is faulty login data.
     """
-    connection_kwargs = connection_params.copy()
+    connection_kwargs = server.copy()
     connection_kwargs.update({'password': 'wrong_password'})
 
     pytest.raises(PHPyPAMInvalidCredentials, phpypam.api, **connection_kwargs)
 
-    connection_kwargs = connection_params.copy()
+    connection_kwargs = server.copy()
     connection_kwargs.update({'username': 'wrong_username'})
 
     pytest.raises(PHPyPAMInvalidCredentials, phpypam.api, **connection_kwargs)
@@ -66,7 +58,7 @@ def test_custom_user_agent():
 
     Test to connect to API with a custom user-agent header set.
     """
-    connection_kwargs = connection_params.copy()
+    connection_kwargs = server.copy()
     connection_kwargs.update({'user_agent': 'my_test_agent'})
 
     pi = phpypam.api(**connection_kwargs)
