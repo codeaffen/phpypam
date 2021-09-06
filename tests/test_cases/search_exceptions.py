@@ -8,27 +8,11 @@ from tests.conftest import filter_request_uri, filter_response, cassette_name, F
 from phpypam.core.exceptions import PHPyPAMException, PHPyPAMEntityNotFoundException
 
 
-with open('tests/vars/server.yml') as c:
-    server = yaml.safe_load(c)
+with open('tests/vars/server.yml') as conn:
+    connection_params = yaml.safe_load(conn)
 
-connection_params = dict(
-    url=server['url'],
-    app_id=server['app_id'],
-    username=server['username'],
-    password=server['password'],
-    ssl_verify=True
-)
-
-not_found_cases = [
-    dict(controller='subnets', path='cidr/1.2.3.4', params=None),
-    dict(controller='addresses', path='search/1.2.3.4'),
-    dict(controller='vlans', path='/1337'),
-    dict(controller='vrf'),
-    dict(controller='devices', path='/1337'),
-    dict(controller='sections', params={'filter_by': 'name', 'filter_value': 'not_existing_section', 'filter_match': 'full'}),
-    dict(controller='tools/device_types', path='/1337'),
-    dict(controller='addresses', path='search_hostname/not_existing_hostname')
-]
+with open('tests/vars/search_exceptions.yml') as config:
+    not_found_cases = yaml.safe_load(config)['not_found_cases']
 
 
 @vcr.use_cassette(cassette_name('test_entity_not_found_exception'),
@@ -51,4 +35,4 @@ def test_entity_not_found_exception(case):
         pi.get_entity(case['controller'], controller_path=case.pop('path', None), params=case.pop('params', None))
 
         # assert exception message is in all not found outputs
-        assert e.value.args[0] in PHPyPAMException._NOT_FOUND_MESSAGES
+        assert str(e.value) in PHPyPAMException._NOT_FOUND_MESSAGES

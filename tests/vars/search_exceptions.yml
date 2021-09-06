@@ -1,0 +1,21 @@
+---
+not_found_cases:
+  -   controller: subnets
+      params: null
+      path: cidr/1.2.3.4
+  -   controller: addresses
+      path: search/1.2.3.4
+  -   controller: vlans
+      path: /1337
+  -   controller: vrf
+  -   controller: devices
+      path: /1337
+  -   controller: sections
+      params:
+          filter_by: name
+          filter_match: full
+          filter_value: not_existing_section
+  -   controller: tools/device_types
+      path: /1337
+  -   controller: addresses
+      path: search_hostname/not_existing_hostname

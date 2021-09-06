@@ -2,16 +2,21 @@
 
 ## Unreleased
 
----
-
 ### New
 
 ### Changes
 
 ### Fixes
-* fix #48 - raise PHPyPAMEntityNotFoundException if searching for non existing host
 
 ### Breaks
+
+## 1.0.2 - (2021-09-02)
+
+---
+
+### Fixes
+
+* fix #48 - raise PHPyPAMEntityNotFoundException if searching for non existing host
 
 ## 1.0.1 - (2021-01-04)
 
