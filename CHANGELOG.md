@@ -5,6 +5,7 @@
 ### New
 
 ### Changes
+* Switch sphinx from recommonmark to myst_parser
 
 * remove duplicated code from test cases
 
