@@ -3,3 +3,4 @@ url: ~~url~~
 app_id: ~~app_id~~
 username: ~~username~~
 password: ~~password~~
+ssl_verify: ~~ssl_verify~~

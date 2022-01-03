@@ -23,7 +23,7 @@ def pi(*arg, **kwargs):
     app_id = kwargs.pop('app_id', server['app_id'])
     username = kwargs.pop('username', server['username'])
     password = kwargs.pop('password', server['password'])
-    ssl_verify = kwargs.pop('ssl_verify', True)
+    ssl_verify = kwargs.pop('ssl_verify', server['ssl_verify'])
 
     return phpypam.api(
         url=url,
