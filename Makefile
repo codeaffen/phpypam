@@ -1,3 +1,7 @@
+ifndef PHPIPAM_VALIDATE_CERTS
+override PHPIPAM_VALIDATE_CERTS = true
+endif
+
 ifdef PYPI_REPO
 TWINE_OPTIONS = --repository $(PYPI_REPO)
 endif
@@ -60,7 +64,7 @@ test-setup: | tests/vars/server.yml
 	pip install --upgrade -r requirements-dev.txt
 
 tests/vars/server.yml:
-	sed -e "s#~~url~~#$(PHPIPAM_URL)#" -e "s#~~app_id~~#$(PHPIPAM_APPID)#" -e "s#~~username~~#$(PHPIPAM_USERNAME)#" -e "s#~~password~~#$(PHPIPAM_PASSWORD)#" $@.example > $@
+	sed -e "s#~~url~~#$(PHPIPAM_URL)#" -e "s#~~app_id~~#$(PHPIPAM_APPID)#" -e "s#~~username~~#$(PHPIPAM_USERNAME)#" -e "s#~~password~~#$(PHPIPAM_PASSWORD)#" -e "s#~~ssl_verify~~#$(PHPIPAM_VALIDATE_CERTS)#" $@.example > $@
 
 test-all:
 	coverage run -m pytest tests/test_cases/* -v
