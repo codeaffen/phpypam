@@ -54,9 +54,9 @@ def test_invalid_credentials_exception():
                   before_recorde_response=filter_response
                  )
 def test_entity_not_found_execption(pi):
-    """Test to create a new vlan.
+    """Test not found execption on empty subnet.
 
-    Create a vlan if it doesn't exists
+    Create an empty subnet, search for addresses and get not found exception.
     """
 
     my_subnet = dict(
