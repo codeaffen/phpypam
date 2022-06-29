@@ -51,6 +51,8 @@ clean:
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
 	coverage erase
+	docker-compose -f tests/docker/docker-compose.yml stop
+	docker-compose -f tests/docker/docker-compose.yml rm -f
 
 doc-setup:
 	pip install --upgrade -r docs/requirements.txt
@@ -77,6 +79,11 @@ coverage: test-all
 
 coverage-xml: test-all
 	coverage xml --include 'phpypam/*','phpypam/**/*','tests/**/*'
+
+setup-phpipam: test-setup
+	docker-compose -f tests/docker/docker-compose.yml up -d
+	sleep 30
+	sh tests/docker/setup_database.sh
 
 FORCE:
 
