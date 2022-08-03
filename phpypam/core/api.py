@@ -166,7 +166,7 @@ class Api(object):
 
         return self._query(token=self._api_token, method=GET, path=_path, params=_params)
 
-    def create_entity(self, controller, controller_path=None, data=None, params=None):
+    def create_entity(self, controller, controller_path=None, data=None, params=None, headers=None):
         """Create an entity.
 
         :param controller: Name of the controller to use.
@@ -177,6 +177,8 @@ class Api(object):
         :type data: dict
         :param params: Dictionary list of tuples or bytes to send in the query string for the :class:`Request`., defaults to None
         :type params: dict, optional
+        :param headers: Optional request headers, defaults to None
+        :type headers: dict, optional
 
         :return: Returns the newly created entity.
         :rtype: Union[dict, list]
@@ -184,13 +186,14 @@ class Api(object):
         _path = controller
         _controller_path = controller_path
         _params = params
+        _headers = headers
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=POST, path=_path, data=data, params=_params)
+        return self._query(token=self._api_token, method=POST, path=_path, data=data, params=_params, headers=_headers)
 
-    def delete_entity(self, controller, controller_path, params=None):
+    def delete_entity(self, controller, controller_path, params=None, headers=None):
         """Delete an entity.
 
         :param controller: Name of the controller to use.
@@ -199,16 +202,19 @@ class Api(object):
         :type controller_path: str
         :param params: Dictionary, list of tuples or bytes to send in the query string for the :class:`Request`., defaults to None
         :type params: dict, optional
+        :param headers: Optional request headers, defaults to None
+        :type headers: dict, optional
 
         :return: Returns True if entity was deleted successfully or either 'dict' or 'list' of entities to work on.
         :rtype: Union[book, dict, list]
         """
         _path = '{}/{}'.format(controller, controller_path)
         _params = params
+        _headers = headers
 
-        return self._query(token=self._api_token, method=DELETE, path=_path, params=_params)
+        return self._query(token=self._api_token, method=DELETE, path=_path, params=_params, headers=_headers)
 
-    def update_entity(self, controller, controller_path=None, data=None, params=None):
+    def update_entity(self, controller, controller_path=None, data=None, params=None, headers=None):
         """Update an entity.
 
         :param controller: Name of the controller to use.
@@ -219,6 +225,8 @@ class Api(object):
         :type data: dict, optional
         :param params: Dictionary list of tuples or bytes to send in the query string for the :class:`Request`., defaults to None
         :type params: dict, optional
+        :param headers: Optional request headers, defaults to None
+        :type headers: dict, optional
 
         :return: Returns either a 'dict' or 'list' of the changed entity
         :rtype: Union[dict, list]
@@ -226,11 +234,12 @@ class Api(object):
         _path = controller
         _controller_path = controller_path
         _params = params
+        _headers = headers
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=PATCH, path=_path, data=data, params=_params)
+        return self._query(token=self._api_token, method=PATCH, path=_path, data=data, params=_params, headers=_headers)
 
     def controllers(self):
         """Report all controllers from phpIPAM API.
