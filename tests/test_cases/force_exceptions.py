@@ -67,8 +67,8 @@ def test_entity_not_found_execption(pi):
     )
 
     try:
-        entity = pi.get_entity(controller='subnets', \
-                               controller_path="cidr/{}/{}".format(my_subnet['subnet'], my_subnet['mask']), \
+        entity = pi.get_entity(controller='subnets',
+                               controller_path="cidr/{}/{}".format(my_subnet['subnet'], my_subnet['mask']),
                                params={'filter_by': 'sectionId', 'filter_value': my_subnet['sectionId']})
     except PHPyPAMEntityNotFoundException:
         entity = pi.create_entity(controller='subnets', data=my_subnet)
