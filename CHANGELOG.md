@@ -15,6 +15,9 @@
 * Add ability to use ```podman``` if available on your system to spin up local test environment.
 
 ### Fixes
+* \#57 - add headers parameter to methods create, update and delete
+  * to modify the the output format header `Content-Type: application/xml` is needed
+  * requests to `/addresses` endpoint needs sometimes `Content-Type: application/x-www-form-urlencoded` to work 
 
 * \#51 - Subnet address search with zero results raises incorrect exception
 
