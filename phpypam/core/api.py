@@ -141,7 +141,7 @@ class Api(object):
         """
         return self._api_token
 
-    def get_entity(self, controller, controller_path=None, params=None):
+    def get_entity(self, controller, controller_path=None, params=None, headers=None):
         """Get existing entity from phpIPAM server.
 
         This method query for existing entity. It there a result it will be returned otherwise
@@ -153,6 +153,8 @@ class Api(object):
         :type controller_path: str, optional
         :param params: Request parameters which have to be append to the request URI, defaults to None
         :type params: dict, optional
+        :param headers: Optional request headers, defaults to None
+        :type headers: dict, optional
 
         :return: Result of the query. It can be either a 'list' or 'dict'.
         :rtype: Union[dict, list]
@@ -160,11 +162,12 @@ class Api(object):
         _path = controller
         _controller_path = controller_path
         _params = params
+        _headers = headers
 
         if _controller_path:
             _path = '{}/{}'.format(_path, _controller_path)
 
-        return self._query(token=self._api_token, method=GET, path=_path, params=_params)
+        return self._query(token=self._api_token, method=GET, path=_path, params=_params, headers=None)
 
     def create_entity(self, controller, controller_path=None, data=None, params=None, headers=None):
         """Create an entity.
