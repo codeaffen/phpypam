@@ -20,17 +20,17 @@ default: help
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of:"
-		@echo "  help  			  - to show this message"
-		@echo "  dist  			  - to build the collection archive"
-		@echo "  lint  			  - to run code linting"
-		@echo "  clean 			  - clean workspace"
-		@echo "  doc-setup    - prepare environment for creating documentation"
-		@echo "  doc          - create documentation"
-		@echo "  test-setup   - prepare environment for tests"
-		@echo "  test-all     - run all tests"
-		@echo "  test-<test>  - run a specifig test"
-		@echo "  coverage     - display code coverage"
-		@echo "  coverage-xml - create xml coverage report"
+		@echo "  help 			- to show this message"
+		@echo "  dist 			- to build the collection archive"
+		@echo "  lint 			- to run code linting"
+		@echo "  clean			- clean workspace"
+		@echo "  doc-setup		- prepare environment for creating documentation"
+		@echo "  docs 			- create documentation"
+		@echo "  test-setup		- prepare environment for tests"
+		@echo "  test-all		- run all tests"
+		@echo "  test-<test>		- run a specifig test"
+		@echo "  coverage		- display code coverage"
+		@echo "  coverage-xml		- create xml coverage report"
 
 lint:
 	flake8 phpypam
