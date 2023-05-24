@@ -8,6 +8,230 @@ interactions:
       - gzip, deflate
       Connection:
       - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/subnets/cidr/172.16.0.0/24/?filter_by=sectionId&filter_value=1
+  response:
+    body:
+      string: '{"code":200,"success":false,"message":"No subnets found","time":0.005}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jun 2022 17:19:55 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - phpipam=qobg612scen5cg0q3tucrl4ft1; expires=Sat, 18 Jun 2022 17:19:55 +0000;
+        Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
+      X-Powered-By:
+      - PHP/7.4.25
+    status:
+      code: 200
+      message: OK
+- request:
+    body: subnet=172.16.0.0&mask=24&description=Test+subnet&sectionId=1
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '61'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.24.0
+    method: POST
+    uri: https://ipam.example.org/api/ansible/subnets
+  response:
+    body:
+      string: '{"code":201,"success":true,"message":"Subnet created","id":"7","data":"172.16.0.0\/24","time":0.01}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '99'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jun 2022 17:19:55 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Location:
+      - /api/ansible/subnets/7/
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - phpipam=tb357464vtqrovim5frofkftv6; expires=Sat, 18 Jun 2022 17:19:55 +0000;
+        Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
+      X-Powered-By:
+      - PHP/7.4.25
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/subnets/cidr/172.16.0.0/24
+  response:
+    body:
+      string: '{"code":200,"success":true,"data":[{"id":"7","subnet":"172.16.0.0","mask":"24","sectionId":"1","description":"Test
+        subnet","linked_subnet":null,"firewallAddressObject":null,"vrfId":null,"masterSubnetId":"0","allowRequests":"0","vlanId":null,"showName":"0","device":"0","permissions":"{\"3\":\"1\",\"2\":\"2\"}","pingSubnet":"0","discoverSubnet":"0","resolveDNS":"0","DNSrecursive":"0","DNSrecords":"0","nameserverId":"0","scanAgent":null,"customer_id":null,"isFolder":"0","isFull":"0","tag":"2","threshold":"0","location":null,"editDate":null,"lastScan":null,"lastDiscovery":null}],"time":0.002}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '595'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jun 2022 17:19:55 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - phpipam=l058v1c85oaqqn4t3o42o5ct5i; expires=Sat, 18 Jun 2022 17:19:55 +0000;
+        Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
+      X-Powered-By:
+      - PHP/7.4.25
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+    method: GET
+    uri: https://ipam.example.org/api/ansible/subnets/7/addresses
+  response:
+    body:
+      string: '{"code":200,"success":false,"message":"No addresses found","time":0.002}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '72'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jun 2022 17:19:55 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - phpipam=khmc4upj4867krpc6qceoc41ci; expires=Sat, 18 Jun 2022 17:19:55 +0000;
+        Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
+      X-Powered-By:
+      - PHP/7.4.25
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.24.0
+    method: DELETE
+    uri: https://ipam.example.org/api/ansible/subnets/7
+  response:
+    body:
+      string: '{"code":200,"success":true,"message":"Subnet deleted","time":0.012}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '67'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jun 2022 17:19:55 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - phpipam=2cddlh0r9eiqeb4bna42sk3h1i; expires=Sat, 18 Jun 2022 17:19:55 +0000;
+        Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
+      X-Powered-By:
+      - PHP/7.4.25
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
       Content-Length:
       - '0'
       User-Agent:
@@ -16,17 +240,19 @@ interactions:
     uri: https://ipam.example.org/api/ansible/user
   response:
     body:
-      string: '{"code":200,"success":true,"data":{"token":"FnNkF2HHbI7nK46Xo9TicJub","expires":"2021-09-02
-        23:03:39"},"time":0.026}'
+      string: '{"code":200,"success":true,"data":{"token":"xLmEsnDFDcdc2tMDvZ_ke2E4","expires":"2022-06-17
+        23:32:08"},"time":0.014}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '116'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:08 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -34,12 +260,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=sks3vafc4ijohhrd002obonl9v; expires=Fri, 03 Sep 2021 15:03:39 +0000;
+      - phpipam=heu0hf4t9uce8plstnf7odvmkj; expires=Sat, 18 Jun 2022 17:32:08 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -58,16 +284,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/subnets/cidr/1.2.3.4
   response:
     body:
-      string: '{"code":200,"success":false,"message":"No subnets found","time":0.004}'
+      string: '{"code":200,"success":false,"message":"No subnets found","time":0.002}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '70'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:08 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -75,14 +303,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=iecmn27al98vo45j9bcba5sol9; expires=Fri, 03 Sep 2021 15:03:39 +0000;
+      - phpipam=4dk5cj9jkb0ignqsa78jbca1tk; expires=Sat, 18 Jun 2022 17:32:08 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -101,16 +327,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/addresses/search/1.2.3.4
   response:
     body:
-      string: '{"code":200,"success":false,"message":"Address not found","time":0.006}'
+      string: '{"code":200,"success":false,"message":"Address not found","time":0.01}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '70'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -118,14 +346,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=ae8pe4uvc9nn0qjrc7naluuut4; expires=Fri, 03 Sep 2021 15:03:39 +0000;
+      - phpipam=t3mfkb80hnoe34hqgu734rneth; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -144,16 +370,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/vlans//1337
   response:
     body:
-      string: '{"code":200,"success":false,"message":"Vlan not found","time":0.004}'
+      string: '{"code":200,"success":false,"message":"Vlan not found","time":0.006}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '68'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -161,14 +389,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=45kanoi8nrv3tr0j2p7sd18hga; expires=Fri, 03 Sep 2021 15:03:39 +0000;
+      - phpipam=dktkh5dsc2ptaj8hnlgkvh75km; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -187,16 +413,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/vrf
   response:
     body:
-      string: '{"code":200,"success":false,"message":"No vrfs configured","time":0.003}'
+      string: '{"code":200,"success":false,"message":"No vrfs configured","time":0.007}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '72'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -204,14 +432,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=ghf8m3mg1jgffg2nhvipfv1v5m; expires=Fri, 03 Sep 2021 15:03:39 +0000;
+      - phpipam=1fee1qpatb31teq398v2apu7qf; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -230,16 +456,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/devices//1337
   response:
     body:
-      string: '{"code":404,"success":false,"message":"Device not found","time":0.004}'
+      string: '{"code":404,"success":false,"message":"Device not found","time":0.003}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '70'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:39 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -247,14 +475,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=ms3o18qp73as0453ml9cem7er0; expires=Fri, 03 Sep 2021 15:03:40 +0000;
+      - phpipam=62oh04h2dsso9stpgs4u5qck01; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 404
       message: Not Found
@@ -270,7 +496,7 @@ interactions:
       User-Agent:
       - python-requests/2.24.0
     method: GET
-    uri: https://ipam.example.org/api/ansible/sections/?filter_by=name&filter_value=not_existing_section&filter_match=full
+    uri: https://ipam.example.org/api/ansible/sections/?filter_by=name&filter_match=full&filter_value=not_existing_section
   response:
     body:
       string: '{"code":404,"success":false,"message":"No results (filter applied)","time":0.003}'
@@ -279,10 +505,12 @@ interactions:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '81'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:40 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -290,14 +518,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=jacokfagbga30uqsktqpi2cvjv; expires=Fri, 03 Sep 2021 15:03:40 +0000;
+      - phpipam=ub5g10oa1jm6ee2t5fv8dn4iun; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 404
       message: Not Found
@@ -316,16 +542,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/tools/device_types//1337
   response:
     body:
-      string: '{"code":200,"success":false,"message":"No objects found","time":0.004}'
+      string: '{"code":200,"success":false,"message":"No objects found","time":0.003}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '70'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:40 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -333,14 +561,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=4osgafc1kbtn19o7hu29u7gug5; expires=Fri, 03 Sep 2021 15:03:40 +0000;
+      - phpipam=mfho6tlf2o9f1g9jklqlbs6vnu; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK
@@ -359,16 +585,18 @@ interactions:
     uri: https://ipam.example.org/api/ansible/addresses/search_hostname/not_existing_hostname
   response:
     body:
-      string: '{"code":200,"success":false,"message":"Hostname not found","time":0.004}'
+      string: '{"code":200,"success":false,"message":"Hostname not found","time":0.005}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - Keep-Alive
+      Content-Length:
+      - '72'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 02 Sep 2021 15:03:40 GMT
+      - Fri, 17 Jun 2022 17:32:09 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Keep-Alive:
@@ -376,14 +604,12 @@ interactions:
       Pragma:
       - no-cache
       Server:
-      - Apache/2.4.37 (centos) OpenSSL/1.1.1g
+      - Apache
       Set-Cookie:
-      - phpipam=ak5asjgl554okb6a80e6jjso8i; expires=Fri, 03 Sep 2021 15:03:40 +0000;
+      - phpipam=2d249dg3pqificihkqnoepplo8; expires=Sat, 18 Jun 2022 17:32:09 +0000;
         Max-Age=86400; path=/; SameSite=Lax; HttpOnly;
-      Transfer-Encoding:
-      - chunked
       X-Powered-By:
-      - PHP/7.2.24
+      - PHP/7.4.25
     status:
       code: 200
       message: OK

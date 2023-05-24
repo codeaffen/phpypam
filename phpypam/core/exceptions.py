@@ -15,7 +15,8 @@ class PHPyPAMException(Exception):
         'No devices configured',
         'No results (filter applied)',
         'No objects found',
-        'Hostname not found'
+        'Hostname not found',
+        'No addresses found'
     }
 
     def __init__(self, *args, code=None, message=None):

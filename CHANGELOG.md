@@ -4,12 +4,21 @@
 
 ### New
 
-### Changes
-* Switch sphinx from recommonmark to myst_parser
+* add make target for setting up local test environment
 
+  Add target ```setup-phpipam``` to setup a local test environment on an easy way.
+
+### Changes
+
+* Switch sphinx from recommonmark to myst_parser
 * remove duplicated code from test cases
+* Add ability to use ```podman``` if available on your system to spin up local test environment.
 
 ### Fixes
+
+* \#51 - Subnet address search with zero results raises incorrect exception
+
+  When searching for addresses in an empty subnet, ```PHPEntityNotFoundException``` will be raised.
 
 ### Breaks
 
