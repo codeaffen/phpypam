@@ -23,6 +23,6 @@ setuptools.setup(
     keywords='api phpipam',
     python_requires='>=3.6',
     install_requires=[
-        'requests (>=2.21,<3.0)',
+        'requests (>=2.31,<3.0)',
     ],
 )
