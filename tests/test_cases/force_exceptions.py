@@ -48,17 +48,17 @@ def test_invalid_credentials_exception():
     with pytest.raises(PHPyPAMInvalidCredentials):
         phpypam.api(**connection_kwargs)
 
+
 @vcr.use_cassette(cassette_name('test_entity_not_found_exception'),
                   filter_headers=FILTER_REQUEST_HEADERS,
                   before_record_request=filter_request_uri,
                   before_recorde_response=filter_response
-                 )
+                  )
 def test_entity_not_found_execption(pi):
     """Test not found execption on empty subnet.
 
     Create an empty subnet, search for addresses and get not found exception.
     """
-
     my_subnet = dict(
         subnet='172.16.0.0',
         mask=24,
@@ -81,6 +81,6 @@ def test_entity_not_found_execption(pi):
 
     print(entity)
     with pytest.raises(PHPyPAMEntityNotFoundException):
-        pi.get_entity(controller='subnets', controller_path=entity['id']+'/addresses')
+        pi.get_entity(controller='subnets', controller_path=entity['id'] + '/addresses')
 
     pi.delete_entity(controller='subnets', controller_path=entity['id'])
