@@ -1,9 +1,7 @@
 """Tests to check section search via url parameters."""
 import pytest
-import vcr
 import yaml
 
-from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam import PHPyPAMEntityNotFoundException
 
 
@@ -11,11 +9,6 @@ with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
 
-@vcr.use_cassette(cassette_name('test_search_not_existing_section'),
-                  filter_headers=FILTER_REQUEST_HEADERS,
-                  before_record_request=filter_request_uri,
-                  before_recorde_response=filter_response
-                  )
 def test_search_not_existing_section(pi):
     """Search for non existing section.
 
@@ -26,11 +19,6 @@ def test_search_not_existing_section(pi):
     pytest.raises(PHPyPAMEntityNotFoundException, pi.get_entity, **search_kwargs)
 
 
-@vcr.use_cassette(cassette_name('test_search_existing_section'),
-                  filter_headers=FILTER_REQUEST_HEADERS,
-                  before_record_request=filter_request_uri,
-                  before_recorde_response=filter_response
-                  )
 def test_search_existing_section(pi):
     """Search for existing section.
 
