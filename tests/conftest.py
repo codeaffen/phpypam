@@ -1,7 +1,7 @@
 """Provide some base configurations for tests."""
 import phpypam
 import pytest
-import py.path
+import py.path  # pyright: ignore reportMissingImports=false
 import yaml
 
 from urllib.parse import urlparse, urlunparse

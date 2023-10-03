@@ -1,10 +1,8 @@
 """Test exceptions."""
 import phpypam
 import pytest
-import vcr
 import yaml
 
-from tests.conftest import filter_request_uri, filter_response, cassette_name, FILTER_REQUEST_HEADERS
 from phpypam.core.exceptions import PHPyPAMEntityNotFoundException, PHPyPAMInvalidCredentials, PHPyPAMInvalidSyntax
 
 
@@ -12,11 +10,6 @@ with open('tests/vars/server.yml') as c:
     server = yaml.safe_load(c)
 
 
-@vcr.use_cassette(cassette_name('test_invalid_syntax_exception'),
-                  filter_headers=FILTER_REQUEST_HEADERS,
-                  before_record_request=filter_request_uri,
-                  before_recorde_response=filter_response
-                  )
 def test_invalid_syntax_exception():
     """Test invalid syntax exception.
 
@@ -29,11 +22,6 @@ def test_invalid_syntax_exception():
         phpypam.api(**connection_kwargs)
 
 
-@vcr.use_cassette(cassette_name('test_invalid_credentials_exception'),
-                  filter_headers=FILTER_REQUEST_HEADERS,
-                  before_record_request=filter_request_uri,
-                  before_recorde_response=filter_response
-                  )
 def test_invalid_credentials_exception():
     """Test invalid credentials exception.
 
@@ -49,11 +37,6 @@ def test_invalid_credentials_exception():
         phpypam.api(**connection_kwargs)
 
 
-@vcr.use_cassette(cassette_name('test_entity_not_found_exception'),
-                  filter_headers=FILTER_REQUEST_HEADERS,
-                  before_record_request=filter_request_uri,
-                  before_recorde_response=filter_response
-                  )
 def test_entity_not_found_execption(pi):
     """Test not found execption on empty subnet.
 
