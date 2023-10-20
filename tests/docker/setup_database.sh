@@ -7,17 +7,17 @@ function info() {
     echo "${@}" >&10
 }
 
-MYSQL_PING='mysqladmin ping -h ${DB_HOST:-127.0.0.1} -P ${DB_PORT:-3306} -u ${MYSQL_ROOT_USER:-root} -p${MYSQL_ROOT_PASSWORD:-rootpw}'
+MYSQL_PING="mysqladmin ping -h ${DB_HOST:-127.0.0.1} -P ${DB_PORT:-3306} -u ${MYSQL_ROOT_USER:-root} -p${MYSQL_ROOT_PASSWORD:-rootpw}"
 
 if grep -q podman <<< $(docker --version 2> /dev/null) ; then
   info "Podman is installed"
   DOCKER_CMD=$(which podman)
 fi
 
-if ${DOCKER_CMD} ps | grep -q docker_phpipam_1 && ! eval ${MYSQL_PING} ; then
+if "${DOCKER_CMD}" ps | grep -q docker_phpipam_1 && ! eval "${MYSQL_PING}" ; then
 
     info -n "Waiting for database connection "
-    while ! eval ${MYSQL_PING} ; do
+    while ! eval "${MYSQL_PING}" ; do
         info -n "."
         sleep 1
     done
