@@ -9,12 +9,12 @@ function info() {
 
 MYSQL_PING="mysqladmin ping -h ${DB_HOST:-127.0.0.1} -P ${DB_PORT:-3306} -u ${MYSQL_ROOT_USER:-root} -p${MYSQL_ROOT_PASSWORD:-rootpw}"
 
-if grep -q podman <<< $(docker --version 2> /dev/null) ; then
+if grep -qi podman <<< $(docker version 2> /dev/null) ; then
   info "Podman is installed"
   DOCKER_CMD=$(which podman)
 fi
 
-if "${DOCKER_CMD}" ps | grep -q docker_phpipam_1 && ! eval "${MYSQL_PING}" ; then
+if "${DOCKER_CMD}" ps | grep -q phpipam_test_webserver && ! eval "${MYSQL_PING}" ; then
 
     info -n "Waiting for database connection "
     while ! eval "${MYSQL_PING}" ; do
@@ -26,10 +26,10 @@ fi
 
 info "Database is up"
 
-if [[ $(mysqlshow -u root -prootpw -h 127.0.0.1 -P 3306 phpipam | wc -l) -eq 5 ]] ; then
+if [[ $(mysqlshow -u root -prootpw -h 127.0.0.1 -P 3306 phpipam 2>/dev/null | wc -l) -eq 5 ]] ; then
 
     info "Creating database ${DB_NAME:-phpipam}"
-    ${DOCKER_CMD} exec -ti docker_phpipam_1 sh -c 'mysql -h database -u phpipam -pphpipamadmin phpipam < /phpipam/db/SCHEMA.sql' && ((init_result++))
+    ${DOCKER_CMD} exec -t phpipam_test_webserver sh -c 'mysql -h database -u phpipam -pphpipamadmin phpipam < /phpipam/db/SCHEMA.sql' && ((init_result++))
 
     info "Activating API"
     mysql -u phpipam -pphpipamadmin -h "${DB_HOST:-127.0.0.1}" phpipam --execute="UPDATE settings SET api=1 WHERE id=1;" && ((init_result++))

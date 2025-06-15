@@ -7,14 +7,16 @@ on:
 jobs:
   e2e_tests:
     name: end to end tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        phpipam-version: ['v1.4x', 'v1.5x']
-        python-version: ['3.7.x', '3.8.x', '3.9.x', '3.10.x']
+        phpipam-version: ['v1.4x', 'v1.5x', 'v1.6x', 'v1.7x']
+        python-version: ['3.9.x', '3.10.x', '3.11.x', '3.12.0', '3.13.0']
     steps:
+      - name: Upgrade docker-compose
+        run: sudo apt-get install --upgrade docker-compose
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
       - name: setup phpipam
