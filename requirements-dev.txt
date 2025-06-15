@@ -10,7 +10,5 @@ setuptools
 PyYAML
 bumpversion
 pytest
-pytest-replay
-pytest-vcr
 pytest-xdist
 coverage
