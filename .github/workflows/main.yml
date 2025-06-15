@@ -7,7 +7,7 @@ on:
 jobs:
   e2e_tests:
     name: end to end tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         phpipam-version: ['v1.4x', 'v1.5x']
