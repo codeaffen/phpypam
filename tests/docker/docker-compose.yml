@@ -1,7 +1,7 @@
 version: '3'
 services:
   phpipam:
-    image: "phpipam/phpipam-www:v${PHPIPAM_VERSION:-1.4.4}"
+    image: "phpipam/phpipam-www:${PHPIPAM_VERSION:-v1.4.4}"
     ports:
       - "${PHPIPAM_PORT:-443}:443"
     environment:
@@ -11,6 +11,7 @@ services:
       IPAM_DATABASE_NAME: "phpipam"
     depends_on:
       - database
+    container_name: phpipam_test_webserver
   database:
     image: mariadb:10.3.18
     ports:
@@ -20,3 +21,4 @@ services:
       MYSQL_USER: "phpipam"
       MYSQL_PASSWORD: "phpipamadmin"
       MYSQL_DATABASE: "phpipam"
+    container_name: phpipam_test_db
