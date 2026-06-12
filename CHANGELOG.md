@@ -20,6 +20,12 @@
 
   When searching for addresses in an empty subnet, ```PHPEntityNotFoundException``` will be raised.
 
+* \#63 - Fix deprecation warning issue
+
+As pkg_resources was deprecated we switched to importlib.metadata to get the same data.
+
+* \#64 - Fix test suite issues
+
 ### Breaks
 
 ## 1.0.2 - (2021-09-02)
